@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>aspnet-WebApp-D9E4DCC7-61E7-4D16-A5C6-11B4D016DAEB</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,5 +29,4 @@
   <ItemGroup>
     <Folder Include="Assets\" />
   </ItemGroup>
-
 </Project>
