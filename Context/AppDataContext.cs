@@ -28,9 +28,20 @@ namespace Context
                             .WithMany(c => c.Products)
                             .HasForeignKey(p => p.CategoryId);
 
-                        prod.HasOne(p => p.Asset)
+                        prod.HasMany(p => p.Assets)
                             .WithMany(a => a.Products)
-                            .HasForeignKey(p => p.AssetId);
+                            .UsingEntity<ProductAsset>(
+                                pa => pa.HasOne(p => p.Asset)
+                                    .WithMany(a => a.ProductAssets)
+                                    .HasForeignKey(a => a.AssetId),
+
+                                pa => pa.HasOne(p => p.Product)
+                                    .WithMany(a => a.ProductAssets)
+                                    .HasForeignKey(a => a.AssetId),
+
+                                pa => pa.HasKey(
+                                    qa => new { qa.ProductId, qa.AssetId })
+                                );
                     });
 
             modelBuilder.Entity<Category>()

@@ -36,5 +36,10 @@ namespace WebApp.Controllers
 
             return Redirect("Error");
         }
+
+        public IActionResult Details(Guid id)
+        {
+            return View(ProductViewModel.GetProductById(id, _productRepository));
+        }
     }
 }

@@ -3,10 +3,14 @@
 
 // Write your JavaScript code.
 $(document).ready(function () {
-    let imgArray = [];
+    $(".carousel").carousel();
+
     $("#uploadBtn").on("click", function () {
         let formData = new FormData();
-        formData.append("file", $("#file")[0].files[0]);
+        let fileList = $("#file")[0].files;
+        for (let key in fileList) {
+            formData.append("file", fileList[key]);
+        }
         $.ajax({
             url: "/api/Asset",
             type: "post",
@@ -17,21 +21,17 @@ $(document).ready(function () {
             error: function (data) {
                 debugger;
             },
-            success: function (responce) {//приймет массив id картинок
-                if (responce != null) {
-                    imgArray.push(responce[0])
-                    $("#img").attr("src", "/api/Asset/" + responce[0]);
-                    $(".preview img").show();
-                    for (let i = 1; i < responce.length; i++) {
-                        imgArray.push(responce[i]);
-                        let img = new image(responce[i]);
-                        let counter = 1;
-                        img.onLoad = function () {
-                            if (++counter === imgArray.length) {
-                                alert("+ 1");
-                            }
-                        }
+            success: function (responce) {//в responce массив с id картинок
+                if (responce != null && responce.length > 0) {
+                    $(".carousel-inner").html("");
+                    for (let i in responce) {
+                        $(".my_images").append("<input type='hidden' name='images[" + i + "]' value='" + responce[i] + "' />");
+
+                        $(".carousel-inner").append("<div class='carousel-item'>\
+                                <img class='d-block w-100'\
+                                src = '/api/Asset/"+ responce[i] + "' alt='slide'/></div>");
                     }
+                    $(".carousel-inner .carousel-item").first().addClass("active");
                 }
             }
         })

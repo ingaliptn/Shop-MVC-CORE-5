@@ -27,5 +27,6 @@ namespace Entities
         public string FileExtention { get; set; }
 
         public List<Product> Products { get; set; }
+        public List<ProductAsset> ProductAssets { get; set; }
     }
 }

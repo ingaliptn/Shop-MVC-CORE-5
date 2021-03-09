@@ -4,14 +4,16 @@ using Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace WebApp.Migrations.AppData
 {
     [DbContext(typeof(AppDataContext))]
-    partial class AppDataContextModelSnapshot : ModelSnapshot
+    [Migration("20210309182917_newAsset")]
+    partial class newAsset
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,17 +72,17 @@ namespace WebApp.Migrations.AppData
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e50dbdea-8669-4825-beeb-246a5ba70950"),
+                            Id = new Guid("715eadc4-b2fe-4a64-842b-07654e5af1ee"),
                             Name = "Pivo Razliv"
                         },
                         new
                         {
-                            Id = new Guid("9c3a9028-965e-4543-b137-aff950282470"),
+                            Id = new Guid("63191af2-96d7-4f82-9af7-abb53d09fbeb"),
                             Name = "Pivo Banki"
                         },
                         new
                         {
-                            Id = new Guid("32242340-d396-4bc7-b6ad-698df62ea1c7"),
+                            Id = new Guid("2a40ba37-e470-46e6-92d5-415b8aef2b99"),
                             Name = "Pivo Bokal"
                         });
                 });

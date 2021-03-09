@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Entities;
@@ -22,7 +23,7 @@ namespace BL
         public decimal RetailPrice { get; set; }
 
         public decimal WholesalePrice { get; set; }
-        public Guid? ImageId { get; set; }
+        public List<Guid> ImageIds { get; set; } = new List<Guid>();
         public Guid? Asset { get; set; }
 
         public ProductViewModel()
@@ -39,10 +40,10 @@ namespace BL
             Id = product.Id;
             Name = product.Name;
             Description = product.Description;
-            ImageId = product.AssetId;
             RetailPrice = product.RetailPrice;
             WholesalePrice = product.WholesalePrice;
             CategoryName = product.Category?.Name;
+            ImageIds = product.Assets.Select(a => a.Id).ToList();
         }
 
         public static implicit operator Product(ProductViewModel model)
@@ -53,7 +54,7 @@ namespace BL
                 Description = model.Description,
                 RetailPrice = model.RetailPrice,
                 WholesalePrice = model.WholesalePrice,
-                AssetId = model.ImageId,
+                ProductAssets = model.ImageIds.Select(i => new ProductAsset { AssetId = i, ProductId = model.Id }).ToList(),
                 CategoryId = model.CategoryId,
                 Name = model.Name
             };
@@ -64,6 +65,7 @@ namespace BL
             return (repository.AllItems as DbSet<Product>)
                 .Where(p => p.Id == id)
                 .Include(p => p.Category)
+                .Include(p => p.Assets)
                 .Select(p => new ProductViewModel(p))
                 .First();
         }
@@ -77,6 +79,7 @@ namespace BL
                     .Select(p => new ProductViewModel(p));
             }
             return (repository.AllItems as DbSet<Product>)
+                .Include(p => p.Assets)
                 .Include(p => p.Category)
                 .Select(p => new ProductViewModel(p));
         }

@@ -22,8 +22,8 @@ namespace Entities
 
         public Guid CategoryId { get; set; }
         public Category Category { get; set; }
-        public Guid? AssetId { get; set; }
-        public Asset Asset { get; set; }
+        public List<Asset> Assets { get; set; }
+        public List<ProductAsset> ProductAssets { get; set; }
         public decimal RetailPrice { get; set; }
         public decimal WholesalePrice { get; set; }
     }
