@@ -37,7 +37,7 @@ namespace Context
 
                                 pa => pa.HasOne(p => p.Product)
                                     .WithMany(a => a.ProductAssets)
-                                    .HasForeignKey(a => a.AssetId),
+                                    .HasForeignKey(a => a.ProductId),
 
                                 pa => pa.HasKey(
                                     qa => new { qa.ProductId, qa.AssetId })
@@ -46,9 +46,9 @@ namespace Context
 
             modelBuilder.Entity<Category>()
                 .HasData(
-                    new Category { Name = "Pivo Razliv", Id = Guid.NewGuid() },
-                    new Category { Name = "Pivo Banki", Id = Guid.NewGuid() },
-                    new Category { Name = "Pivo Bokal", Id = Guid.NewGuid() });
+                    new Category { Name = "Пиво Разлив", Id = Guid.NewGuid() },
+                    new Category { Name = "Пиво Банки", Id = Guid.NewGuid() },
+                    new Category { Name = "Пиво Бокал", Id = Guid.NewGuid() });
 
             base.OnModelCreating(modelBuilder);
         }

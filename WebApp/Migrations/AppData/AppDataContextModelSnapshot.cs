@@ -70,18 +70,18 @@ namespace WebApp.Migrations.AppData
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e50dbdea-8669-4825-beeb-246a5ba70950"),
-                            Name = "Pivo Razliv"
+                            Id = new Guid("f356adfb-1696-400d-ae02-c41eeb0f5a68"),
+                            Name = "Пиво Разлив"
                         },
                         new
                         {
-                            Id = new Guid("9c3a9028-965e-4543-b137-aff950282470"),
-                            Name = "Pivo Banki"
+                            Id = new Guid("83d59c33-acd4-4a42-a92a-f438e74d6fe1"),
+                            Name = "Пиво Банки"
                         },
                         new
                         {
-                            Id = new Guid("32242340-d396-4bc7-b6ad-698df62ea1c7"),
-                            Name = "Pivo Bokal"
+                            Id = new Guid("c8779720-cacf-4bad-a811-140a8ff2e39f"),
+                            Name = "Пиво Бокал"
                         });
                 });
 
@@ -156,7 +156,7 @@ namespace WebApp.Migrations.AppData
 
                     b.HasOne("Entities.Product", "Product")
                         .WithMany("ProductAssets")
-                        .HasForeignKey("AssetId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

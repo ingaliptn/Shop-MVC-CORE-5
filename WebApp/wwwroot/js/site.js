@@ -25,7 +25,7 @@ $(document).ready(function () {
                 if (responce != null && responce.length > 0) {
                     $(".carousel-inner").html("");
                     for (let i in responce) {
-                        $(".my_images").append("<input type='hidden' name='images[" + i + "]' value='" + responce[i] + "' />");
+                        $(".my_images").append("<input name='ImageIds[" + i + "]' value='" + responce[i] + "' />");
 
                         $(".carousel-inner").append("<div class='carousel-item'>\
                                 <img class='d-block w-100'\

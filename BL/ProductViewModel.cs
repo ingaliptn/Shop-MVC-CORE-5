@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Threading.Tasks;
 using Entities;
 using Microsoft.EntityFrameworkCore;
 using Repositories;
@@ -43,6 +44,7 @@ namespace BL
             RetailPrice = product.RetailPrice;
             WholesalePrice = product.WholesalePrice;
             CategoryName = product.Category?.Name;
+            CategoryId = product.CategoryId;
             ImageIds = product.Assets.Select(a => a.Id).ToList();
         }
 
@@ -70,11 +72,21 @@ namespace BL
                 .First();
         }
 
+        public static async Task<bool> Delete(Guid id, IProductRepository repository)
+        {
+            return await repository.DeleteItemAsync(id);
+        }
+
+        public static async Task<bool> Edit(ProductViewModel model, IProductRepository repository)
+        {
+            return await repository.ChangeItemAsync(model);
+        }
+
         public static IQueryable<ProductViewModel> GetProductList(IProductRepository repository, Guid? categoryId = null)
         {
             if (categoryId.HasValue)
             {
-                return (repository.AllItems as DbSet<Product>)
+                return repository.AllItems
                     .Where(p => p.CategoryId == categoryId)
                     .Select(p => new ProductViewModel(p));
             }

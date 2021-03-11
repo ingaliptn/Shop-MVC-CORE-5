@@ -3,39 +3,39 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApp.Migrations.AppData
 {
-    public partial class nullabletest : Migration
+    public partial class newKeys2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
                 table: "Categories",
                 keyColumn: "Id",
-                keyValue: new Guid("77bc5ad8-1208-4147-bda2-ec8f9a6cdb54"));
+                keyValue: new Guid("4e873ae5-791f-46e8-b6a2-9df9c60c0e1e"));
 
             migrationBuilder.DeleteData(
                 table: "Categories",
                 keyColumn: "Id",
-                keyValue: new Guid("e15973e7-4bfb-45d2-b5b7-f298602cae13"));
+                keyValue: new Guid("ac34f89f-c54e-49f0-84fb-c52e90626152"));
 
             migrationBuilder.DeleteData(
                 table: "Categories",
                 keyColumn: "Id",
-                keyValue: new Guid("e61fd726-0ad1-4327-ab20-63e238ac53d8"));
+                keyValue: new Guid("f5872e36-30f6-4fd1-a7c6-aabdfc2aba10"));
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { new Guid("78e4d5df-1a21-4d0a-8805-cb675171a04a"), "Pivo Razliv" });
+                values: new object[] { new Guid("f356adfb-1696-400d-ae02-c41eeb0f5a68"), "Пиво Разлив" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { new Guid("bd16a953-b5dc-4522-81d9-9e02a748f9d9"), "Pivo Banki" });
+                values: new object[] { new Guid("83d59c33-acd4-4a42-a92a-f438e74d6fe1"), "Пиво Банки" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { new Guid("69609eec-7182-46d8-8301-846cf78c0256"), "Pivo Bokal" });
+                values: new object[] { new Guid("c8779720-cacf-4bad-a811-140a8ff2e39f"), "Пиво Бокал" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -43,32 +43,32 @@ namespace WebApp.Migrations.AppData
             migrationBuilder.DeleteData(
                 table: "Categories",
                 keyColumn: "Id",
-                keyValue: new Guid("69609eec-7182-46d8-8301-846cf78c0256"));
+                keyValue: new Guid("83d59c33-acd4-4a42-a92a-f438e74d6fe1"));
 
             migrationBuilder.DeleteData(
                 table: "Categories",
                 keyColumn: "Id",
-                keyValue: new Guid("78e4d5df-1a21-4d0a-8805-cb675171a04a"));
+                keyValue: new Guid("c8779720-cacf-4bad-a811-140a8ff2e39f"));
 
             migrationBuilder.DeleteData(
                 table: "Categories",
                 keyColumn: "Id",
-                keyValue: new Guid("bd16a953-b5dc-4522-81d9-9e02a748f9d9"));
+                keyValue: new Guid("f356adfb-1696-400d-ae02-c41eeb0f5a68"));
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { new Guid("e61fd726-0ad1-4327-ab20-63e238ac53d8"), "Pivo Razliv" });
+                values: new object[] { new Guid("ac34f89f-c54e-49f0-84fb-c52e90626152"), "Pivo Razliv" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { new Guid("e15973e7-4bfb-45d2-b5b7-f298602cae13"), "Pivo Banki" });
+                values: new object[] { new Guid("f5872e36-30f6-4fd1-a7c6-aabdfc2aba10"), "Pivo Banki" });
 
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { new Guid("77bc5ad8-1208-4147-bda2-ec8f9a6cdb54"), "Pivo Bokal" });
+                values: new object[] { new Guid("4e873ae5-791f-46e8-b6a2-9df9c60c0e1e"), "Pivo Bokal" });
         }
     }
 }

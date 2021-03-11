@@ -37,6 +37,34 @@ namespace WebApp.Controllers
             return Redirect("Error");
         }
 
+        public IActionResult Edit(Guid id)
+        {
+            return View(ProductViewModel.GetProductById(id, _productRepository));
+        }
+
+        public async Task<IActionResult> AcceptEdit(ProductViewModel model)
+        {
+            if (!model.IsEmpty)
+            {
+                await _productRepository.ChangeItemAsync(model);
+            }
+            return Redirect("~/Product/List");
+        }
+
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            return View(ProductViewModel.GetProductById(id, _productRepository));
+        }
+
+        public async Task<IActionResult> AcceptDelete(Guid? id)
+        {
+            if (id.HasValue)
+            {
+                await _productRepository.DeleteItemAsync(id.Value);
+            }
+            return Redirect("~/Product/List");
+        }
+
         public IActionResult Details(Guid id)
         {
             return View(ProductViewModel.GetProductById(id, _productRepository));
