@@ -16,19 +16,19 @@
         <div class="card" style="width: 18rem; margin: 15px; display: inline-block">
             @if (item.ImageIds.Count > 0)
             {
-                <a asp-action="Details" asp-route-id="@item.Id">
+                <a asp-action="Details" asp-route-id="@item.Id" class="text-dark">
                     <img class="card-img-top" src="~/api/Asset/@item.ImageIds[0]" alt="Card image cap">
                 </a>
             }
             else
             {
-                <a asp-action="Details" asp-route-id="@item.Id">
+                <a asp-action="Details" asp-route-id="@item.Id" class="text-dark">
                     <img class="card-img-top" src="~/images/No_image_available.png" alt="Card image cap">
                 </a>
             }
             <div class="card-body">
                 <a asp-action="Details" asp-route-id="@item.Id">
-                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                    <h5 class="card-title text-dark">@Html.DisplayFor(modelItem => item.Name)</h5>
                 </a>
                 <p class="card-text">@Html.DisplayFor(modelItem => item.RetailPrice) ₴</p>
             </div>

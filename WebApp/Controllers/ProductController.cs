@@ -40,11 +40,11 @@ namespace WebApp.Controllers
             return View(ProductViewModel.GetProductById(id, _productRepository));
         }
 
-        public async Task<IActionResult> AcceptEdit(ProductViewModel model)
+        public async Task<IActionResult> AcceptEdit(ProductViewModel model, Guid? id)
         {
-            if (!model.IsEmpty)
+            if (id.HasValue)
             {
-                await _productRepository.ChangeItemAsync(model);
+                await ProductViewModel.Edit(model, _productRepository);
             }
             return Redirect("~/Product/List");
         }

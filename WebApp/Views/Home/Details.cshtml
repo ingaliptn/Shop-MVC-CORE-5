@@ -12,48 +12,41 @@
     <hr />
     <div class="col-md-8">
         <dl class="row">
-            <dt class="col-md-2">
+            <dt class="col-sm-3">
                 @Html.DisplayNameFor(model => model.Id)
             </dt>
-            <dd class="col-md-10">
+            <dd class="col-sm-9">
                 @Html.DisplayFor(model => model.Id)
             </dd>
-            <dt class="col-md-2">
+            <dt class="col-sm-3">
                 @Html.DisplayNameFor(model => model.Name)
             </dt>
-            <dd class="col-md-10">
+            <dd class="col-sm-9">
                 @Html.DisplayFor(model => model.Name)
             </dd>
-            <dt class="col-md-2">
+            <dt class="col-sm-3">
                 @Html.DisplayNameFor(model => model.Description)
             </dt>
-            <dd class="col-md-10">
+            <dd class="col-sm-9">
                 @Html.DisplayFor(model => model.Description)
             </dd>
-            <dt class="col-md-2">
-                @Html.DisplayNameFor(model => model.CategoryName)
+            <dt class="col-sm-3">
+                Category Name
             </dt>
-            <dd class="col-md-10">
+            <dd class="col-sm-9">
                 @Html.DisplayFor(model => model.CategoryName)
             </dd>
-            <dt class="col-md-2">
+            <dt class="col-sm-3">
                 @Html.DisplayNameFor(model => model.RetailPrice)
             </dt>
-            <dd class="col-md-10">
-                @Html.DisplayFor(model => model.RetailPrice)
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.RetailPrice) ₴
             </dd>
-            <dt class="col-md-2">
+            <dt class="col-sm-3">
                 @Html.DisplayNameFor(model => model.WholesalePrice)
             </dt>
-            <dd class="col-md-10">
-                @Html.DisplayFor(model => model.WholesalePrice)
-            </dd>
-            <dt class="col-md-2">
-                @Html.DisplayNameFor(model => model.ImageIds)
-            </dt>
-            <dd class="col-md-10">
-                @Html.DisplayFor(model => model.ImageIds)
-                <br />
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.WholesalePrice) ₴
             </dd>
         </dl>
 
@@ -90,6 +83,6 @@
         </div>
     </div>
 </div>
-<div>
-    <a asp-action="Index">Back to Home</a>
+<div style="margin: 10px;">
+    <a asp-action="Index" class="btn btn-info">Back to Home</a>
 </div>
