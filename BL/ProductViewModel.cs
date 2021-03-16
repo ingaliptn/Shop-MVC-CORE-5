@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Entities;
+using Microsoft.EntityFrameworkCore;
+using Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using Entities;
-using Microsoft.EntityFrameworkCore;
-using Repositories;
 
 namespace BL
 {

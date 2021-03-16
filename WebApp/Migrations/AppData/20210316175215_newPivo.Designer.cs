@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WebApp.Migrations.AppData
 {
     [DbContext(typeof(AppDataContext))]
-    [Migration("20210311150201_newKeys")]
-    partial class newKeys
+    [Migration("20210316175215_newPivo")]
+    partial class newPivo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -72,18 +72,23 @@ namespace WebApp.Migrations.AppData
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ac34f89f-c54e-49f0-84fb-c52e90626152"),
-                            Name = "Pivo Razliv"
+                            Id = new Guid("df11b38f-4c03-4ccc-93e0-9ffe5e7584d4"),
+                            Name = "Пиво Разлив"
                         },
                         new
                         {
-                            Id = new Guid("f5872e36-30f6-4fd1-a7c6-aabdfc2aba10"),
-                            Name = "Pivo Banki"
+                            Id = new Guid("bd8bc074-f3e4-4a69-beb5-dd31c7d35d30"),
+                            Name = "Пиво Банки"
                         },
                         new
                         {
-                            Id = new Guid("4e873ae5-791f-46e8-b6a2-9df9c60c0e1e"),
-                            Name = "Pivo Bokal"
+                            Id = new Guid("93e2f7a3-4dae-4e51-8e2c-5a230426f4da"),
+                            Name = "Пиво Стекло"
+                        },
+                        new
+                        {
+                            Id = new Guid("fa18228f-a9f2-4306-865f-aa66e67b8eba"),
+                            Name = "Пиво бочка"
                         });
                 });
 

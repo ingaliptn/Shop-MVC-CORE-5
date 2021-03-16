@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BL;
+﻿using BL;
+using Microsoft.AspNetCore.Mvc;
 using Repositories;
+using System;
+using System.Threading.Tasks;
 
 namespace WebApp.Controllers
 {
@@ -17,9 +15,9 @@ namespace WebApp.Controllers
             _productRepository = productRepository;
         }
 
-        public IActionResult List()
+        public IActionResult List(Guid? id)
         {
-            return View(ProductViewModel.GetProductList(_productRepository));
+            return View(ProductViewModel.GetProductList(_productRepository, id));
         }
 
         public async Task<IActionResult> Create(ProductViewModel model)
@@ -51,7 +49,7 @@ namespace WebApp.Controllers
             return Redirect("~/Product/List");
         }
 
-        public async Task<IActionResult> Delete(Guid id)
+        public IActionResult Delete(Guid id)
         {
             return View(ProductViewModel.GetProductById(id, _productRepository));
         }

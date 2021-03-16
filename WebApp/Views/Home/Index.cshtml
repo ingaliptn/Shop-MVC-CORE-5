@@ -1,8 +1,55 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IndexViewModel
+@using BL
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    img {
+        width: 286px;
+        height: 286px;
+    }
+</style>
+<div>
+    @foreach (ProductViewModel item in Model.ProductViewModels)
+    {
+        <div class="card" style="width: 18rem; margin: 15px; display: inline-block">
+            @if (item.ImageIds.Count > 0)
+            {
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <img class="card-img-top" src="~/api/Asset/@item.ImageIds[0]" alt="Card image cap">
+                </a>
+            }
+            else
+            {
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <img class="card-img-top" src="~/images/No_image_available.png" alt="Card image cap">
+                </a>
+            }
+            <div class="card-body">
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                </a>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.RetailPrice) ₴</p>
+            </div>
+        </div>
+    }
 </div>
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       class="btn btn-outline-dark">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Назад
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       class="btn btn-outline-dark">
+        Вперед
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+}

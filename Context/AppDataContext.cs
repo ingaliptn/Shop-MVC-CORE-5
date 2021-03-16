@@ -48,7 +48,8 @@ namespace Context
                 .HasData(
                     new Category { Name = "Пиво Разлив", Id = Guid.NewGuid() },
                     new Category { Name = "Пиво Банки", Id = Guid.NewGuid() },
-                    new Category { Name = "Пиво Бокал", Id = Guid.NewGuid() });
+                    new Category { Name = "Пиво Стекло", Id = Guid.NewGuid() },
+            new Category { Name = "Пиво бочка", Id = Guid.NewGuid() });
 
             base.OnModelCreating(modelBuilder);
         }
