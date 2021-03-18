@@ -30,7 +30,13 @@
                 <a asp-action="Details" asp-route-id="@item.Id">
                     <h5 class="card-title text-dark">@Html.DisplayFor(modelItem => item.Name)</h5>
                 </a>
-                <p class="card-text">@Html.DisplayFor(modelItem => item.RetailPrice) ₴</p>
+                <div>
+                    <p class="card-text">
+                        @Html.DisplayFor(modelItem => item.RetailPrice) ₴
+                        <span style="margin-left: 135px"></span>
+                        <s>@Html.DisplayFor(modelItem => item.WholesalePrice) ₴</s>
+                    </p>
+                </div>
             </div>
         </div>
     }

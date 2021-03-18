@@ -34,9 +34,12 @@ namespace Repositories
 
         public async Task<bool> ChangeItemAsync(T entity)
         {
-            T candidate = await AllItems.FirstOrDefaultAsync(e => e.Id == entity.Id);
-            candidate = entity;
+            _context.Entry(entity).State = EntityState.Modified;
             return await SaveChangesAsync() > 0;
+            //T candidate = _context.Set<T>().FirstOrDefault(e => e.Id == entity.Id);
+            //candidate = entity;
+            //_context.SaveChanges();
+            //return await SaveChangesAsync() > 0;
         }
 
         public async Task<bool> DeleteItemAsync(Guid id)

@@ -17,10 +17,7 @@ namespace WebApp.Models
 
         public bool HasPreviousPage
         {
-            get
-            {
-                return (PageNumber > 1);
-            }
+            get { return (PageNumber > 1); }
         }
 
         public bool HasNextPage

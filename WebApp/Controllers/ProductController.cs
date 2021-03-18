@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Repositories;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
+using WebApp.Models;
 
 namespace WebApp.Controllers
 {
@@ -40,9 +42,9 @@ namespace WebApp.Controllers
             return View(ProductViewModel.GetProductById(id, _productRepository));
         }
 
-        public async Task<IActionResult> AcceptEdit(ProductViewModel model, Guid? id)
+        public async Task<IActionResult> AcceptEdit(ProductViewModel model)
         {
-            if (id.HasValue)
+            if (model != null && !model.IsEmpty)
             {
                 await ProductViewModel.Edit(model, _productRepository);
             }

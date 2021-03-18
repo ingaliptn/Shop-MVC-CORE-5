@@ -10,6 +10,7 @@ namespace Context
         public DbSet<Asset> Assets { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        //public DbSet<CartItem> CartItems { get; set; }
 
         public AppDataContext(DbContextOptions<AppDataContext> options)
             : base(options) { }
