@@ -1,0 +1,48 @@
+﻿@using BL
+@model BL.ProductViewModel
+@{
+    ViewData["Title"] = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cart</title>
+</head>
+<body>
+
+    <h3>Cart Page</h3>
+    <table cellpadding="2" cellspacing="2" border="1" class="table table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Option</th>
+                <th scope="col">Name</th>
+                <th scope="col">Photo</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Sub Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.cart)
+            {
+                <tr>
+                    <th scope="row"><a asp-controller="cart" asp-action="remove" asp-route-id="@item.Product.Id">Remove</a></th>
+                    <td>@item.Product.Name</td>
+                    <td><img src="~/images/No_image_available.png" width="60" alt="Card image cap"></td>
+                    <td>@item.Product.RetailPrice ₴</td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.Product.RetailPrice * item.Quantity) ₴</td>
+                </tr>
+            }
+            <tr>
+                <td align="right" colspan="6">Sum</td>
+                <td style="background-color: azure">@ViewBag.total</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <a class="btn btn-light" asp-controller="Home" asp-action="Index">Continue Shopping</a>
+</body>
+</html>

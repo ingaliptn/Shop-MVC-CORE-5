@@ -4,14 +4,16 @@ using Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace WebApp.Migrations.AppData
 {
     [DbContext(typeof(AppDataContext))]
-    partial class AppDataContextModelSnapshot : ModelSnapshot
+    [Migration("20210325134006_cart")]
+    partial class cart
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,44 +72,24 @@ namespace WebApp.Migrations.AppData
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e82e8d74-baea-4a0b-86fc-95bf4dcb9be7"),
+                            Id = new Guid("fc00e9f8-b4b2-432e-b8c7-5b30d294c5b4"),
                             Name = "Пиво Разлив"
                         },
                         new
                         {
-                            Id = new Guid("fb8d487d-1f14-45ad-a6ff-7dd73a692eee"),
+                            Id = new Guid("0b710ae1-27e1-4c83-a53d-84d4d0b64604"),
                             Name = "Пиво Банки"
                         },
                         new
                         {
-                            Id = new Guid("ef341e2f-0807-44e0-aa94-eda68d224772"),
+                            Id = new Guid("5dfc960e-8582-4a7e-8b15-f22bc2f5b230"),
                             Name = "Пиво Стекло"
                         },
                         new
                         {
-                            Id = new Guid("0bf635b2-b51e-4e87-a5e5-fea2fe4b565e"),
+                            Id = new Guid("68f004dd-a106-4b25-a67a-2557c0a93fb1"),
                             Name = "Пиво бочка"
                         });
-                });
-
-            modelBuilder.Entity("Entities.Item", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnName("Id");
-
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ItemInCart");
                 });
 
             modelBuilder.Entity("Entities.Product", b =>
@@ -160,17 +142,6 @@ namespace WebApp.Migrations.AppData
                     b.ToTable("ProductAsset");
                 });
 
-            modelBuilder.Entity("Entities.Item", b =>
-                {
-                    b.HasOne("Entities.Product", "Product")
-                        .WithMany("Items")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("Entities.Product", b =>
                 {
                     b.HasOne("Entities.Category", "Category")
@@ -213,8 +184,6 @@ namespace WebApp.Migrations.AppData
 
             modelBuilder.Entity("Entities.Product", b =>
                 {
-                    b.Navigation("Items");
-
                     b.Navigation("ProductAssets");
                 });
 #pragma warning restore 612, 618

@@ -10,13 +10,21 @@ namespace Context
         public DbSet<Asset> Assets { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
-        //public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<Item> Items { get; set; }
 
         public AppDataContext(DbContextOptions<AppDataContext> options)
             : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Item>(
+                prod =>
+                {
+                    prod.HasOne(p => p.Product)
+                        .WithMany(p => p.Items)
+                        .HasForeignKey(p => p.ProductId);
+                });
+
             modelBuilder.Entity<Product>(
                     prod =>
                     {

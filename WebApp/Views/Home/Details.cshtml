@@ -8,7 +8,6 @@
 <h1>Details</h1>
 
 <div>
-    <h4>ProductViewModel</h4>
     <hr />
     <div class="col-md-8">
         <dl class="row">
@@ -79,4 +78,5 @@
 </div>
 <div style="margin: 10px;">
     <a asp-action="Index" class="btn btn-info">Back to Home</a>
+    <a asp-controller="cart" asp-action="buy" asp-route-id="@Model.Id">Buy Now</a>
 </div>

@@ -26,5 +26,6 @@ namespace Entities
         public List<ProductAsset> ProductAssets { get; set; }
         public decimal RetailPrice { get; set; }
         public decimal WholesalePrice { get; set; }
+        public List<Item> Items { get; set; }
     }
 }
